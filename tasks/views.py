@@ -60,3 +60,23 @@ def task_delete(request, pk):
         task.delete()
 
     return redirect("task_list")
+
+
+def task_edit(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        description = request.POST.get("description", "").strip()
+
+        if title:
+            task.title = title
+            task.description = description
+            task.save()
+            return redirect("task_list")
+
+    return render(
+        request,
+        "tasks/task_form.html",
+        {"task": task},
+    )

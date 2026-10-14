@@ -63,6 +63,11 @@
                             {% if task.completed %}Undo{% else %}Complete{% endif %}
                         </button>
                     </form>
+                    <!-- Edit Button -->
+                    <a href="{% url 'task_edit' task.pk %}"
+                       class="btn btn-sm btn-outline-primary">
+                       Edit
+                    </a>
                     <form method="post" action="{% url 'task_delete' task.pk %}"
                           onsubmit="return confirm('Delete this task?');">
                         {% csrf_token %}
