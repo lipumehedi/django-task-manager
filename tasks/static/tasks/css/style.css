@@ -3,6 +3,7 @@
    Django Task Manager - Custom UI
    ======================================== */
 
+
 :root {
     --tm-primary: #4f46e5;
     --tm-primary-dark: #4338ca;
@@ -12,27 +13,21 @@
     --tm-muted: #64748b;
     --tm-border: #e2e8f0;
     --tm-success: #15803d;
-    --tm-danger: #dc2626;
     --tm-radius: 16px;
     --tm-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
 }
 
 body {
-    background: var(--tm-bg) !important;
+    min-height: 100vh;
+    background: var(--tm-bg);
     color: var(--tm-text);
     font-family: Inter, "Segoe UI", Arial, sans-serif;
     line-height: 1.6;
-    min-height: 100vh;
 }
-
-/* Main layout */
 
 .container {
-    width: 100%;
     max-width: 1140px;
 }
-
-/* Headings */
 
 h1, h2, h3, h4, h5 {
     color: var(--tm-text);
@@ -44,38 +39,26 @@ h1 {
     font-size: clamp(1.65rem, 4vw, 2.25rem);
 }
 
-.text-muted,
-.text-secondary {
+.text-muted {
     color: var(--tm-muted) !important;
 }
 
-/* Cards */
-
 .card {
     background: var(--tm-surface);
-    border: 1px solid var(--tm-border) !important;
-    border-radius: var(--tm-radius) !important;
+    border: 1px solid var(--tm-border);
+    border-radius: var(--tm-radius);
     box-shadow: var(--tm-shadow);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.card:hover {
-    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.09);
 }
 
 .card-body {
     padding: 1.35rem;
 }
 
-/* Buttons */
-
 .btn {
+    padding: 0.65rem 1rem;
     border-radius: 10px;
     font-weight: 600;
-    padding: 0.65rem 1rem;
-    transition: background-color 0.2s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn:hover {
@@ -93,24 +76,12 @@ h1 {
     border-color: var(--tm-primary-dark);
 }
 
-.btn-success {
-    background: var(--tm-success);
-    border-color: var(--tm-success);
-}
-
-.btn-danger {
-    background: var(--tm-danger);
-    border-color: var(--tm-danger);
-}
-
-/* Form controls */
-
 .form-control,
 .form-select {
     min-height: 46px;
+    padding: 0.7rem 0.9rem;
     border: 1px solid var(--tm-border);
     border-radius: 10px;
-    padding: 0.7rem 0.9rem;
     background-color: #fff;
 }
 
@@ -120,15 +91,8 @@ h1 {
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.13);
 }
 
-textarea.form-control {
-    min-height: 130px;
-    resize: vertical;
-}
-
-/* Progress bar */
-
 .progress {
-    height: 10px;
+    height: 12px;
     overflow: hidden;
     border-radius: 99px;
     background: #e8eaf3;
@@ -139,72 +103,188 @@ textarea.form-control {
     border-radius: 99px;
 }
 
-/* Badges */
-
-.badge {
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    padding: 0.45em 0.7em;
-    border-radius: 7px;
+.progress-percentage {
+    color: var(--tm-primary);
+    font-size: 1.5rem;
+    white-space: nowrap;
 }
 
-/* Alerts and messages */
+.dashboard-header {
+    padding: 1rem 0 1.25rem;
+}
+
+.dashboard-eyebrow {
+    color: var(--tm-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.stat-card {
+    border-top: 3px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.09);
+}
+
+.stat-total {
+    border-top-color: #6366f1;
+}
+
+.stat-completed {
+    border-top-color: #16a34a;
+}
+
+.stat-pending {
+    border-top-color: #f59e0b;
+}
+
+.stat-label {
+    color: var(--tm-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.stat-number {
+    font-size: clamp(1.8rem, 4vw, 2.25rem);
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: #eef2ff;
+    color: var(--tm-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.stat-completed .stat-icon {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.stat-pending .stat-icon {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.filter-card .form-label {
+    color: var(--tm-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.task-card {
+    border-left: 4px solid var(--tm-primary);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.task-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.09);
+}
+
+.task-card-completed {
+    border-left-color: #16a34a;
+}
+
+.task-title,
+.task-description {
+    overflow-wrap: anywhere;
+}
+
+.task-description {
+    color: #475569;
+    white-space: pre-line;
+}
+
+.task-actions {
+    flex-shrink: 0;
+}
+
+.badge {
+    padding: 0.5em 0.7em;
+    font-weight: 600;
+}
 
 .alert {
     border: 0;
     border-radius: 12px;
 }
 
-/* Links */
-
-a {
-    transition: color 0.2s ease;
+.empty-state {
+    background: var(--tm-surface);
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--tm-radius);
 }
 
-a:not(.btn) {
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
+.empty-state-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #eef2ff;
+    color: var(--tm-primary);
+    font-size: 1.6rem;
 }
 
-/* Keyboard accessibility */
+.pagination {
+    flex-wrap: wrap;
+    gap: 4px;
+}
 
-.btn:focus-visible,
+.page-link {
+    border-radius: 8px;
+}
+
 a:focus-visible,
-.form-control:focus-visible,
-.form-select:focus-visible {
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
     outline: 3px solid rgba(79, 70, 229, 0.25);
     outline-offset: 2px;
 }
 
-/* Tablet and mobile */
-
 @media (max-width: 767.98px) {
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
     .container.py-5 {
         padding-top: 1.5rem !important;
         padding-bottom: 1.5rem !important;
+    }
+
+    .dashboard-header {
+        padding-top: 0.5rem;
+    }
+
+    .dashboard-header > div:last-child {
+        width: 100%;
     }
 
     .card-body {
         padding: 1rem;
     }
 
-    .btn {
-        padding: 0.65rem 0.8rem;
+    .task-actions {
+        width: 100%;
+        padding-top: 1rem;
+        border-top: 1px solid var(--tm-border);
     }
 
-    /* Allow wide tables to scroll on small screens */
-    .table-responsive {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+    .task-actions form,
+    .task-actions a {
+        flex: 1 1 auto;
+    }
+
+    .task-actions .btn {
+        width: 100%;
     }
 }
-
-/* Small phones */
 
 @media (max-width: 420px) {
     h1 {
@@ -220,8 +300,6 @@ a:focus-visible,
         font-size: 16px;
     }
 }
-
-/* Respect reduced-motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
     *,
