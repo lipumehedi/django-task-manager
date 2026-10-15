@@ -1,0 +1,234 @@
+
+/* ========================================
+   Django Task Manager - Custom UI
+   ======================================== */
+
+:root {
+    --tm-primary: #4f46e5;
+    --tm-primary-dark: #4338ca;
+    --tm-bg: #f5f7fb;
+    --tm-surface: #ffffff;
+    --tm-text: #172033;
+    --tm-muted: #64748b;
+    --tm-border: #e2e8f0;
+    --tm-success: #15803d;
+    --tm-danger: #dc2626;
+    --tm-radius: 16px;
+    --tm-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+}
+
+body {
+    background: var(--tm-bg) !important;
+    color: var(--tm-text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Main layout */
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+}
+
+/* Headings */
+
+h1, h2, h3, h4, h5 {
+    color: var(--tm-text);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+}
+
+.text-muted,
+.text-secondary {
+    color: var(--tm-muted) !important;
+}
+
+/* Cards */
+
+.card {
+    background: var(--tm-surface);
+    border: 1px solid var(--tm-border) !important;
+    border-radius: var(--tm-radius) !important;
+    box-shadow: var(--tm-shadow);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.09);
+}
+
+.card-body {
+    padding: 1.35rem;
+}
+
+/* Buttons */
+
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.65rem 1rem;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: var(--tm-primary);
+    border-color: var(--tm-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--tm-primary-dark);
+    border-color: var(--tm-primary-dark);
+}
+
+.btn-success {
+    background: var(--tm-success);
+    border-color: var(--tm-success);
+}
+
+.btn-danger {
+    background: var(--tm-danger);
+    border-color: var(--tm-danger);
+}
+
+/* Form controls */
+
+.form-control,
+.form-select {
+    min-height: 46px;
+    border: 1px solid var(--tm-border);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    background-color: #fff;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--tm-primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.13);
+}
+
+textarea.form-control {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* Progress bar */
+
+.progress {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #e8eaf3;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #4f46e5, #818cf8);
+    border-radius: 99px;
+}
+
+/* Badges */
+
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.45em 0.7em;
+    border-radius: 7px;
+}
+
+/* Alerts and messages */
+
+.alert {
+    border: 0;
+    border-radius: 12px;
+}
+
+/* Links */
+
+a {
+    transition: color 0.2s ease;
+}
+
+a:not(.btn) {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+/* Keyboard accessibility */
+
+.btn:focus-visible,
+a:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.25);
+    outline-offset: 2px;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 767.98px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .container.py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .btn {
+        padding: 0.65rem 0.8rem;
+    }
+
+    /* Allow wide tables to scroll on small screens */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Small phones */
+
+@media (max-width: 420px) {
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 16px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
